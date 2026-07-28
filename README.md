@@ -1,6 +1,6 @@
 # rawsnd
 
-Minimalistický, dřevem voňavý modulární syntezátor v čistém jazyce C, který jako audio sběrnice a propojovací kabely využívá standardní unixové roury (`pipes`) a pojmenované roury (`FIFO`). Žádné složité frameworky, jen nezávislé procesy komunikující pomocí surových 32-bitových plovoucích čísel (`float`) při vzorkovací frekvenci 44100 Hz.
+Minimalistický modulární syntezátor v pure C, který jako audio sběrnice a propojovací kabely využívá standardní unixové pipy a FIFOs. Žádné frameworky, systém používá originální myšlenku linuxu jako modulárního systému procesů. Soubor nezávislých programů komunikující pomocí surových 32-bitových plovoucích čísel (`float`) `sig -> stdin [program] stdout -> sig` při vzorkovací frekvenci 44100 Hz. Vše je signál.
 
 ## Obsažené moduly
 
