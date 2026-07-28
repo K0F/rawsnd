@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -O3 -Wall -Wextra
 
-TARGETS = gen_sine gen_lfo map_lfo fx_mul fx_add gen_env fx_mix
+TARGETS = gen_sine gen_lfo map_lfo fx_mul fx_add gen_env fx_mix gen_harm
 
 all: $(TARGETS)
 
@@ -26,6 +26,8 @@ fx_add: fx_add.c
 gen_env: gen_env.c
 	$(CC) $(CFLAGS) gen_env.c -o gen_env -lm
 
+gen_harm: gen_harm.c
+	$(CC) $(CFLAGS) gen_harm.c -o gen_harm -lm
 
 clean:
 	rm -f $(TARGETS)
