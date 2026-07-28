@@ -1,6 +1,6 @@
 # Unix Pipe Modular Synth
 
-Minimalistický, modulární syntezátor v čistém jazyce C, který jako audio sběrnice a propojovací kabely využívá standardní unixové roury (`pipes`). No frameworks, jen nezávislé procesy komunikující pomocí surových 32-bitových (`floatů`) při vzorkovací frekvenci 44100 Hz.
+Minimalistický, modulární syntezátor v čistém jazyce C, který jako audio sběrnice a propojovací kabely využívá standardní unixové roury (`pipes`). Žádný framework, jen nezávislé procesy komunikující pomocí surových 32-bitových (`floatů`) při vzorkovací frekvenci 44100 Hz.
 
 ## Obsažené moduly
 
