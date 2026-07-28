@@ -2,6 +2,7 @@ fx_add
 fx_mix
 fx_mul
 fx_reverb
+fx_corrode
 gen_env
 gen_harm
 gen_lfo
