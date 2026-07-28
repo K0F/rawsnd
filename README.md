@@ -9,6 +9,7 @@ A minimalist modular synthesizer in pure C that uses standard Unix pipes and FIF
 * **`gen_lfo`** – Low-frequency oscillator generating `saw` or `tri` (triangle) waveforms in the range `[-1.0, 1.0]`.
 * **`gen_env`** – Exponential envelope generator (trigger decay) for shaping tones over time.
 * **`gen_harm`** – Additive synthesizer combining 20 harmonic sine waves with automatic normalization and anti-aliasing protection.
+* **`gen_noise`** – White noise generator.
 
 ### Modifiers and Effects (Processors & FX)
 * **`map_lfo`** – Linear interpolation (lerp) of the input LFO signal into an arbitrary target range `[min, max]`.
