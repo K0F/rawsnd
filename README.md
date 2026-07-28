@@ -28,6 +28,8 @@ To build all binaries, simply run the following in the source directory:
 make
 ```
 
+## Examples
+
 ### Sinus generator
 
 ```bash
@@ -54,7 +56,7 @@ mkfifo /tmp/env_pipe /tmp/voice2_pipe
 rm /tmp/env_pipe /tmp/voice2_pipe
 ```
 
-## Oses
+## OSes
 
 It runs on linux like machines, Android termux included, you may change the final sink to something like:
 
