@@ -22,3 +22,8 @@ make
 ```bash
 ./gen_lfo 4.0 tri | ./map_lfo 100.0 1200.0 | ./gen_sine | aplay -f FLOAT_LE -c 1 -r 44100
 ```
+
+
+## WIP
+
+Toto je velmi raná verze programu, work in progress...
