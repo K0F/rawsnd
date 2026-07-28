@@ -15,7 +15,7 @@ Pro sestavení všech binárek stačí v adresáři se zdrojovými kódy spustit
 
 ```bash
 make
-
+```
 
 ## FM Syntéza
 
