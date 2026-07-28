@@ -54,6 +54,14 @@ mkfifo /tmp/env_pipe /tmp/voice2_pipe
 rm /tmp/env_pipe /tmp/voice2_pipe
 ```
 
+## Oses
+
+It runs on linux like machines, Android termux included, you may change the final sink to something like:
+
+```bash
+ffplay -autoexit -f f32le -ar 44100 -i pipe:0
+```
+
 ## WIP
 
 This is very early stage of program... happy hacking!
