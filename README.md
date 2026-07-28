@@ -15,6 +15,7 @@ A minimalist modular synthesizer in pure C that uses standard Unix pipes and FIF
 * **`fx_add`** – Signal adder for additive synthesis.
 * **`fx_corrode`** – Bitcrusher and subsampler.
 * **`fx_mix`** – Mixer for merging two audio streams together.
+* **`fx_mix_pool`** – Mixer for merging more named piped as an arguments together (max 16).
 * **`fx_mul`** – Signal multiplier (VCA) for applying envelopes or modulation to the audio signal.
 * **`fx_reverb`** – Simple spatial effect (reverb).
 

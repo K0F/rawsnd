@@ -6,5 +6,6 @@ fx_corrode
 gen_env
 gen_harm
 gen_lfo
+gen_noise
 gen_sine
 map_lfo
