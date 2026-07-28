@@ -2,15 +2,22 @@
 
 Minimalistický modulární syntezátor v pure C, který jako audio sběrnice a propojovací kabely využívá standardní unixové pipy a FIFOs. Žádné frameworky, systém používá originální myšlenku linuxu jako modulárního systému procesů. Soubor nezávislých programů komunikující pomocí surových 32-bitových plovoucích čísel (`float`) `sig -> stdin [program] stdout -> sig` při vzorkovací frekvenci 44100 Hz. Vše je signál.
 
+
 ## Obsažené moduly
 
-* **`gen_sine`** – Sinusový oscilátor (VCO). Pokud nemá žádný vstup (`stdin`), hraje statickou frekvenci zadanou argumentem. Pokud je do něj zavedena roura, chová se jako napěťově řízený oscilátor a dynamicky mění frekvenci podle příchozích hodnot.
+### Generátory (Sources)
+* **`gen_sine`** – Sinusový oscilátor (VCO). Pokud nemá žádný vstup (`stdin`), hraje statickou frekvenci zadanou argumentem. Jako VCO dynamicky mění frekvenci podle příchozích hodnot.
 * **`gen_lfo`** – Nízkofrekvenční oscilátor generující průběhy `saw` (pila) nebo `tri` (trojúhelník) v rozsahu `[-1.0, 1.0]`.
 * **`gen_env`** – Generátor exponenciální obálky (trigger decay) pro tvarování tónu v čase.
+* **`gen_harm`** – Aditivní syntezátor skládající 20 harmonických sinusovek s automatickou normalizací a ochranou proti aliasingu.
+
+### Modifikátory a efekty (Processors & FX)
 * **`map_lfo`** – Lineární interpolace (lerp) vstupního LFO signálu do libovolného cílového rozsahu `[min, max]`.
-* **`fx_gain`** – Jednoduchý efekt pro úpravu hlasitosti/zesílení signálu koeficientem.
-* **`fx_mix`** – Sčítač (mixer) pro slučování dvou audio proudů dohromady (využívá FIFO).
+* **`fx_add`** – Sčítač signálů pro míchání proudů.
+* **`fx_mix`** – Mixér pro slučování dvou audio proudů dohromady (s podporou FIFO a doplňováním ticha při výpadku).
 * **`fx_mul`** – Násobič signálů (VCA) pro aplikaci obálky nebo modulace na audio signál.
+* **`fx_reverb`** – Jednoduchý prostorový efekt (comb filter s kruhovým bufferem, feedbackem a tlumicím filtrem).
+
 
 ## Kompilace
 

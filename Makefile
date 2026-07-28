@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -O3 -Wall -Wextra
 
-TARGETS = gen_sine gen_lfo map_lfo fx_mul fx_add gen_env fx_mix gen_harm
+TARGETS = gen_sine gen_lfo map_lfo fx_mul fx_add gen_env fx_mix gen_harm fx_reverb
 
 all: $(TARGETS)
 
@@ -28,6 +28,10 @@ gen_env: gen_env.c
 
 gen_harm: gen_harm.c
 	$(CC) $(CFLAGS) gen_harm.c -o gen_harm -lm
+
+fx_reverb: fx_reverb.c
+	$(CC) $(CFLAGS) fx_reverb.c -o fx_reverb -lm
+
 
 clean:
 	rm -f $(TARGETS)

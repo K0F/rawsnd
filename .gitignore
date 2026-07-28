@@ -1,8 +1,9 @@
-gen_sine
-gen_lfo
-map_lfo
-fx_mul
 fx_add
-gen_env
 fx_mix
+fx_mul
+fx_reverb
+gen_env
 gen_harm
+gen_lfo
+gen_sine
+map_lfo
