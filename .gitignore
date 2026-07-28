@@ -1,3 +1,6 @@
 gen_sine
 gen_lfo
 map_lfo
+fx_mul
+fx_add
+gen_env
