@@ -4,3 +4,4 @@ map_lfo
 fx_mul
 fx_add
 gen_env
+fx_mix

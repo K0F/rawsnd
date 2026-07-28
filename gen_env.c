@@ -1,41 +1,30 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
+#define SAMPLE_RATE 44100.0f
 #define BUFFER_SIZE 512
 
 int main(int argc, char *argv[]) {
-    if (argc < 2) {
-        fprintf(stderr, "Použití: %s <cesta_k_fifo_druhe_linky>\n", argv[0]);
-        return 1;
-    }
+    float trig_freq = (argc > 1) ? atof(argv[1]) : 2.0f; // Údery za sekundu (Hz)
+    float decay = (argc > 2) ? atof(argv[2]) : 4.0f;     // Rychlost doznívání
 
-    FILE *f2 = fopen(argv[1], "rb");
-    if (!f2) {
-        perror("Chyba při otevírání druhého streamu");
-        return 1;
-    }
-
-    float buf1[BUFFER_SIZE];
-    float buf2[BUFFER_SIZE];
-    size_t n1, n2;
+    float phase = 0.0f;
+    float dt = trig_freq / SAMPLE_RATE;
+    float buffer[BUFFER_SIZE];
 
     while (1) {
-        n1 = fread(buf1, sizeof(float), BUFFER_SIZE, stdin);
-        n2 = fread(buf2, sizeof(float), BUFFER_SIZE, f2);
-
-        if (n1 == 0 && n2 == 0) break;
-
-        size_t min_n = (n1 < n2) ? n1 : n2;
-        for (size_t i = 0; i < min_n; i++) {
-            buf1[i] = (buf1[i] + buf2[i]) * 0.5f;
+        for (int i = 0; i < BUFFER_SIZE; i++) {
+            float t = fmodf(phase, 1.0f);
+            float env = expf(-t * decay * 5.0f);
+            
+            buffer[i] = env;
+            phase += dt;
         }
 
-        fwrite(buf1, sizeof(float), min_n, stdout);
+        if (fwrite(buffer, sizeof(float), BUFFER_SIZE, stdout) != BUFFER_SIZE) break;
         fflush(stdout);
-
-        if (n1 == 0 || n2 == 0) break;
     }
 
-    fclose(f2);
     return 0;
 }
