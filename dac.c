@@ -14,8 +14,7 @@ int main(void) {
     return 1;
   }
   // ffplay pro raw 32-bit float audio stream
-  pipe = popen("ffplay -autoexit -nodisp -f f32le -ar 44100 -ac 1 -i pipe:0 2>/dev/null", "w");
-
+  pipe = popen("ffmpeg -f f32le -ar 44100 -ac 1 -i pipe:0 -f audioslave default 2>/dev/null", "w");
 #elif defined(__APPLE__)
   // macOS prostředí -> vyžaduje Homebrew a ffmpeg
   if (system("which ffplay > /dev/null 2>&1") != 0) {

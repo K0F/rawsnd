@@ -14,4 +14,4 @@ gen_noise
 gen_sine
 map_lfo
 dac
-disk_writer
+disk_write
