@@ -12,3 +12,4 @@ gen_lfo
 gen_noise
 gen_sine
 map_lfo
+dac

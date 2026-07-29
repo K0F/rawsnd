@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -O3 -Wall -Wextra
 
-TARGETS = gen_sine gen_lfo gen_noise map_lfo fx_mul fx_add gen_env fx_mix fx_mix_pool gen_harm fx_reverb fx_corrode fx_lowpass fx_highpass
+TARGETS = gen_sine gen_lfo gen_noise map_lfo fx_mul fx_add gen_env fx_mix fx_mix_pool gen_harm fx_reverb fx_corrode fx_lowpass fx_highpass dac
 
 all: $(TARGETS)
 
@@ -47,6 +47,8 @@ fx_lowpass: fx_lowpass.c
 fx_highpass: fx_highpass.c
 	$(CC) $(CFLAGS) fx_highpass.c -o fx_highpass -lm
 
+dac: dac.c
+	$(CC) $(CFLAGS) dac.c -o dac
 
 clean:
 	rm -f $(TARGETS)

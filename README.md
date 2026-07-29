@@ -22,6 +22,11 @@ A minimalist modular synthesizer in pure C that uses standard Unix pipes and FIF
 * **`fx_lowpass`** – Lowpass filter accepts freq.
 * **`fx_highpass`** – Highpass filter accepts freq.
 
+### Sink
+
+* **`dac`** – Default audio sink.
+
+
 ## Compilation
 
 To build all binaries, simply run the following in the source directory:
@@ -35,13 +40,13 @@ make
 ### Sinus generator
 
 ```bash
-./gen_sine 440 | aplay -t raw -f FLOAT_LE -c 1 -r 44100
+./gen_sine 440 | ./dac
 ```
 
 ### FM Synth
 
 ```bash
-./gen_lfo 4.0 tri | ./map_lfo 100.0 1200.0 | ./gen_sine | aplay -t raw -f FLOAT_LE -c 1 -r 44100
+./gen_lfo 4.0 tri | ./map_lfo 100.0 1200.0 | ./gen_sine | ./dac
 ```
 
 
@@ -53,18 +58,15 @@ mkfifo /tmp/env_pipe /tmp/voice2_pipe
 ./gen_env 2.0 4.0 > /tmp/env_pipe &
 ./gen_sine 110 > /tmp/voice2_pipe &
 
-./gen_lfo 3.0 tri | ./map_lfo 100.0 800.0 | ./gen_sine | ./fx_mul /tmp/env_pipe | ./fx_mix /tmp/voice2_pipe | aplay -t raw -f FLOAT_LE -c 1 -r 44100
+./gen_lfo 3.0 tri | ./map_lfo 100.0 800.0 | ./gen_sine | ./fx_mul /tmp/env_pipe | ./fx_mix /tmp/voice2_pipe | ./dac
 
 rm /tmp/env_pipe /tmp/voice2_pipe
 ```
 
-## OSes
+## Compatibility
 
-It runs on linux like machines, Android termux included, you may change the final sink to something like:
+It runs on linux like machines, Android termux included. Code should run on MacOs as well (untested).
 
-```bash
-ffplay -autoexit -f f32le -ar 44100 -i pipe:0
-```
 
 ## WIP
 
