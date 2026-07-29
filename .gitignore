@@ -6,6 +6,7 @@ fx_reverb
 fx_corrode
 fx_lowpass
 fx_highpass
+fx_delay
 gen_env
 gen_harm
 gen_lfo

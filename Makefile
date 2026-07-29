@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -O3 -Wall -Wextra
 
-TARGETS = gen_sine gen_lfo gen_noise map_lfo fx_mul fx_add gen_env fx_mix fx_mix_pool gen_harm fx_reverb fx_corrode fx_lowpass fx_highpass dac
+TARGETS = gen_sine gen_lfo gen_noise map_lfo fx_mul fx_add gen_env fx_mix fx_mix_pool gen_harm fx_reverb fx_corrode fx_lowpass fx_highpass fx_delay dac disk_write
 
 all: $(TARGETS)
 
@@ -41,6 +41,9 @@ gen_noise: gen_noise.c
 fx_reverb: fx_reverb.c
 	$(CC) $(CFLAGS) fx_reverb.c -o fx_reverb -lm
 
+fx_reverb: fx_delay.c
+	$(CC) $(CFLAGS) fx_delay.c -o fx_delay -lm
+
 fx_lowpass: fx_lowpass.c
 	$(CC) $(CFLAGS) fx_lowpass.c -o fx_lowpass -lm
 
@@ -50,8 +53,8 @@ fx_highpass: fx_highpass.c
 dac: dac.c
 	$(CC) $(CFLAGS) dac.c -o dac
 
-dac: disk_writer.c
-	$(CC) $(CFLAGS) disk_writer.c -o disk_writer
+disk_write: disk_write.c
+	$(CC) $(CFLAGS) disk_write.c -o disk_write
 
 
 clean:
