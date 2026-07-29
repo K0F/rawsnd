@@ -6,16 +6,15 @@ int main(void) {
   FILE *pipe = NULL;
 
 #if defined(__ANDROID__)
-  // android
-  if (system("which ffplay > /dev/null 2>&1") != 0) {
-    fprintf(stderr, "[CHYBA] Nástroj 'ffplay' nebyl nalezen.\n");
-    fprintf(stderr, "Pro instalaci na Androidu (Termux) spusťte:\n");
-    fprintf(stderr, "  pkg install ffmpeg\n");
-    return 1;
-  }
-  // ffplay pro raw 32-bit float audio stream
-  pipe = popen("mpv --no-video --demuxer=rawaudio --demuxer-rawaudio-rate=44100 --demuxer-rawaudio-channels=1 --demuxer-rawaudio-format=floatle - 2>/dev/null", "w");
-  // pipe = popen("ffmpeg -f f32le -ar 44100 -ac 1 -i pipe:0 -f audioslave default 2>/dev/null", "w");
+    // Android / Termux
+    if (system("which mpv > /dev/null 2>&1") != 0) {
+        fprintf(stderr, "[CHYBA] Nástroj 'mpv' nebyl nalezen.\n");
+        fprintf(stderr, "Pro instalaci na Androidu (Termux) spusťte:\n");
+        fprintf(stderr, "  pkg install mpv\n");
+        return 1;
+    }
+    pipe = popen("mpv --no-video --demuxer=rawaudio --demuxer-rawaudio-rate=44100 --demuxer-rawaudio-channels=1 --demuxer-rawaudio-format=floatle - 2>/dev/null", "w");
+
 #elif defined(__APPLE__)
   // macOS prostředí -> vyžaduje Homebrew a ffmpeg
   if (system("which ffplay > /dev/null 2>&1") != 0) {
