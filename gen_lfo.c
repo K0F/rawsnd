@@ -6,9 +6,13 @@
 #define SAMPLE_RATE 44100.0f
 #define BUFFER_SIZE 512
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846f
+#endif
+
 int main(int argc, char *argv[]) {
-    float freq = (argc > 1) ? atof(argv[1]) : 1.0f;       // default 1 Hz
-    char *type = (argc > 2) ? argv[2] : "saw";           // saw nebo tri
+    float freq = (argc > 1) ? atof(argv[1]) : 1.0f;        // default 1 Hz
+    char *type = (argc > 2) ? argv[2] : "saw";            // saw, tri nebo sine
 
     float phase = 0.0f;
     float phase_inc = freq / SAMPLE_RATE;
@@ -24,6 +28,8 @@ int main(int argc, char *argv[]) {
                 } else {
                     val = (1.0f - phase) * 4.0f - 1.0f;
                 }
+            } else if (strcmp(type, "sine") == 0) {
+                val = sinf(phase * 2.0f * (float)M_PI);
             } else {
                 val = phase * 2.0f - 1.0f;
             }
