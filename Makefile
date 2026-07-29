@@ -50,6 +50,10 @@ fx_highpass: fx_highpass.c
 dac: dac.c
 	$(CC) $(CFLAGS) dac.c -o dac
 
+dac: disk_writer.c
+	$(CC) $(CFLAGS) disk_writer.c -o disk_writer
+
+
 clean:
 	rm -f $(TARGETS)
 

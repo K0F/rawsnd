@@ -25,6 +25,7 @@ A minimalist modular synthesizer in pure C that uses standard Unix pipes and FIF
 ### Sink
 
 * **`dac`** – Default audio sink.
+* **`disk_writer`** – Writes wav file with [filename.wav].
 
 
 ## Compilation
