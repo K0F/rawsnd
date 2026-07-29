@@ -19,6 +19,8 @@ A minimalist modular synthesizer in pure C that uses standard Unix pipes and FIF
 * **`fx_mix_pool`** – Mixer for merging more named piped as an arguments together (max 16).
 * **`fx_mul`** – Signal multiplier (VCA) for applying envelopes or modulation to the audio signal.
 * **`fx_reverb`** – Simple spatial effect (reverb).
+* **`fx_lowpass`** – Lowpass filter accepts freq.
+* **`fx_highpass`** – Highpass filter accepts freq.
 
 ## Compilation
 

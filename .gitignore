@@ -4,6 +4,8 @@ fx_mix_pool
 fx_mul
 fx_reverb
 fx_corrode
+fx_lowpass
+fx_highpass
 gen_env
 gen_harm
 gen_lfo
